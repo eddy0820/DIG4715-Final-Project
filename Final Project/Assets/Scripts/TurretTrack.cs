@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretTrack : MonoBehaviour {
-    public Transform player;
+    public Transform enemy;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -15,7 +15,7 @@ public class TurretTrack : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        Vector3 direction = player.position - transform.position;
+        Vector3 direction = enemy.position - transform.position;
         float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize ();

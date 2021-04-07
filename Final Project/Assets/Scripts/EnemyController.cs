@@ -40,6 +40,16 @@ public class EnemyController : MonoBehaviour
                 }
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        StationHealth enemy = other.gameObject.GetComponent<StationHealth>();
+
+        if (enemy != null)
+        {
+            enemy.ChangeHealth(-1);
+            Debug.Log("You lost health!");
+        }
+    }
 
 
 }
