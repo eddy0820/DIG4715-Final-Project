@@ -132,11 +132,9 @@ public class turretscript : MonoBehaviour
 
     void Shoot()
     {
-            enemy enemyscript = CurrentTarget.GetComponent<enemy>();
+        EnemyController enemy  = CurrentTarget.GetComponent<EnemyController>();
         GameObject bulletIns = Instantiate(Bullet, barrel.position, pivot.rotation);
         //bulletIns.GetComponent<Rigidbody2D>().AddForce(Direction * force);
-
-
     }
 
     void OnDrawGizmosSelected()

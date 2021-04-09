@@ -8,6 +8,13 @@ public class EnemyController : MonoBehaviour
      private int currentPath = 0;
      private float lastPoint;
      public float speed = 1.0f;
+     private int enemiesSpawned = 0;
+
+
+    private void Awake()
+    {
+        Enemies.enemies.Add(gameObject);
+    }
 
     void Start()
     {
@@ -40,7 +47,14 @@ public class EnemyController : MonoBehaviour
                 }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void Die()
+    {
+        Enemies.enemies.Remove(gameObject);
+        Destroy(transform.gameObject);
+        
+    }
+
+        void OnCollisionEnter2D(Collision2D other)
     {
         StationHealth enemy = other.gameObject.GetComponent<StationHealth>();
 
@@ -49,7 +63,16 @@ public class EnemyController : MonoBehaviour
             enemy.ChangeHealth(-1);
             Debug.Log("You lost health!");
         }
+        
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Die();
+            Destroy(this.gameObject);
+        }
     }
 
-
+    private void stopSpawning()
+    {
+        enemiesSpawned--;
+    }
 }

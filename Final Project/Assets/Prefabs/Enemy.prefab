@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3889982631909853568}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,8 +143,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3857481872267876194, guid: 6551326e14185424397f2018aaa64dd9, type: 3}
+  - {fileID: 81047270466912839, guid: 523efb63aa8ea8949ad6fac0f422393d, type: 3}
+  - {fileID: 7989162211740920006, guid: 8e7044f1c462fb944a5fcc3ca1122822, type: 3}
+  - {fileID: 6517487755587103570, guid: bba4bb1702e11ec44b2b6d65026184aa, type: 3}
+  waves:
+  - enemyPrefab: {fileID: 3889982631909853571}
+    spawnTime: 2
+    maxEnemies: 2
+  - enemyPrefab: {fileID: 3889982631909853571}
+    spawnTime: 2
+    maxEnemies: 3
+  timeBetweenWaves: 5
   speed: 2

@@ -9,11 +9,13 @@ public class StationHealth : MonoBehaviour
      public int health { get { return currentHealth; }}
      int currentHealth;
      SpriteRenderer sprite;
+     private SceneManger manager;
 
     void Start()
     {
         currentHealth = maxHealth;
         sprite = GetComponent<SpriteRenderer>();
+        manager = GameObject.Find("Manager").GetComponent<SceneManger>();
     }
 
     // Update is called once per frame
@@ -32,5 +34,10 @@ public class StationHealth : MonoBehaviour
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
+        if (currentHealth == 0)
+        {
+            manager.gameOver = true;
+        }
     }
 }

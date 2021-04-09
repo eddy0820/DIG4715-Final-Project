@@ -217,7 +217,8 @@ MonoBehaviour:
   timeBetweenShots: 1
   ShootPoint: {fileID: 8512867045295125880}
   force: 100
-  CurrentTarget: {fileID: 0}
+  CurrentTarget: {fileID: 3889982631909853571, guid: b62ec75330473dc47b528b6aaadd1405,
+    type: 3}
   pivot: {fileID: 1112074924308807057}
   barrel: {fileID: 8512867044157528127}
 --- !u!114 &6637532180169482988
