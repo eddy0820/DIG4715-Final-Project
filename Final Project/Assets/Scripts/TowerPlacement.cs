@@ -18,7 +18,7 @@ public class TowerPlacement : MonoBehaviour
             {
                 tower = (GameObject) 
                 Instantiate(towerPrefab, transform.position, Quaternion.identity);
-    
+                EnemySpawner.instance.SetRoundStarted(true);
                 //audio here if we want it
             }
     }
