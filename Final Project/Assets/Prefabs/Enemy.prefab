@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3889982631909853571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.73, y: 1.96, z: 1}
-  m_LocalScale: {x: 8.42242, y: 7.594221, z: 1}
+  m_LocalScale: {x: 1.356347, y: 1.095789, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,9 +72,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.8490566, g: 0.052064814, b: 0.052064814, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 21300000, guid: 2599fa98952a2384abb4038e7e77949e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
@@ -117,18 +117,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.008892596, y: -0.02712658}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.9959234, y: 1.4233902}
   m_EdgeRadius: 0
 --- !u!114 &3889982631909853568
 MonoBehaviour:
@@ -147,12 +147,4 @@ MonoBehaviour:
   - {fileID: 81047270466912839, guid: 523efb63aa8ea8949ad6fac0f422393d, type: 3}
   - {fileID: 7989162211740920006, guid: 8e7044f1c462fb944a5fcc3ca1122822, type: 3}
   - {fileID: 6517487755587103570, guid: bba4bb1702e11ec44b2b6d65026184aa, type: 3}
-  waves:
-  - enemyPrefab: {fileID: 3889982631909853571}
-    spawnTime: 2
-    maxEnemies: 2
-  - enemyPrefab: {fileID: 3889982631909853571}
-    spawnTime: 2
-    maxEnemies: 3
-  timeBetweenWaves: 5
   speed: 2
