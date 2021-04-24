@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour {
     public int currentHealth;
     public EnemyHealth enemyHealth;
 
+    public int economyGiven = 1;
+
     private void Awake () 
     {
         Enemies.enemies.Add (gameObject);
@@ -46,6 +48,7 @@ public class EnemyController : MonoBehaviour {
     void Die () 
     {
         Enemies.enemies.Remove (gameObject);
+        Economy.instance.UpdateEconomy(economyGiven);
         Destroy (transform.gameObject);
 
     }
