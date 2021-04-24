@@ -8,9 +8,15 @@ public class EnemyController : MonoBehaviour {
     private float lastPoint;
     public float speed = 1.0f;
     private int enemiesSpawned = 0;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public EnemyHealth enemyHealth;
 
-    private void Awake () {
+    private void Awake () 
+    {
         Enemies.enemies.Add (gameObject);
+        currentHealth = maxHealth;
+        enemyHealth.SetMaxHealth(maxHealth);
     }
 
     void Start () {
@@ -37,27 +43,44 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void Die () {
+    void Die () 
+    {
         Enemies.enemies.Remove (gameObject);
         Destroy (transform.gameObject);
 
     }
 
-    void OnCollisionEnter2D (Collision2D other) {
+    void OnCollisionEnter2D (Collision2D other) 
+    {
         StationHealth enemy = other.gameObject.GetComponent<StationHealth> ();
 
-        if (enemy != null) {
+        if (enemy != null) 
+        {
             enemy.ChangeHealth (-1);
             Debug.Log ("You lost health!");
         }
 
-        if (other.gameObject.CompareTag ("Bullet")) {
-            Die ();
-            Destroy (this.gameObject);
+        if (other.gameObject.CompareTag ("Bullet")) 
+        {
+            Damage(20);
+
+                if (currentHealth == 0)
+                {
+                   Die ();
+                   Destroy (this.gameObject); 
+                }
+            
         }
     }
 
-    private void stopSpawning () {
+    private void stopSpawning () 
+    {
         enemiesSpawned--;
+    }
+
+    void Damage (int damage)
+    {
+        currentHealth -= damage;
+        enemyHealth.SetHealth(currentHealth);
     }
 }

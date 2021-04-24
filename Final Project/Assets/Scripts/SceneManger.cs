@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneManger : MonoBehaviour {
+public class SceneManger : MonoBehaviour 
+{
     public bool gameOver = false;
     public bool gameWin = false;
 
-    void Start () {
-        QuitGame ();
+    void Start () 
+    {
 
     }
-    public void SwitchScene (string sceneName) {
+    public void SwitchScene (string sceneName) 
+    {
         SceneManager.LoadScene (sceneName);
 
         if (gameWin == true) {
@@ -23,10 +25,8 @@ public class SceneManger : MonoBehaviour {
             SceneManager.LoadScene ("Lose");
         }
 
-    }
-
-    public void QuitGame () {
-        if (Input.GetKey (KeyCode.Escape)) {
+        if (Input.GetKeyDown("escape")) 
+        {
             //Application.Quit ();
             Debug.Log ("Game is quitting");
         }
