@@ -17,6 +17,7 @@ public class StationHealth : MonoBehaviour
 
     public Text stationHealthText;
     public Sprite[] spriteArray;
+    public ParticleSystem particlePrefab;
 
     void Start()
     {
@@ -32,12 +33,14 @@ public class StationHealth : MonoBehaviour
         {
             //audio for losing health would go here
            sprite.sprite = spriteArray[1];
+           particlePrefab.Play();
         }
 
         if (currentHealth == 3)
         {
             //audio again
             sprite.sprite = spriteArray[2];
+            particlePrefab.Play();
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);

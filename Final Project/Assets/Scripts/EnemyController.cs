@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour {
     public int damageToStation = -1;
 
     private bool stopBulletCollisions = false;
+    public ParticleSystem brokenPrefab;
 
     private void Awake() 
     {
@@ -88,6 +89,7 @@ public class EnemyController : MonoBehaviour {
             {
                 Die();
                 stopBulletCollisions = true;
+                brokenPrefab.Play();
             }
             
         }
