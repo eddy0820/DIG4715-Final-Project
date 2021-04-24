@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7113214510021073707}
   - component: {fileID: 7113214510021073704}
+  - component: {fileID: 1306587999}
+  - component: {fileID: 1306588000}
   m_Layer: 0
   m_Name: Station
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7113214510021073705}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.82, y: -2.05, z: 0}
-  m_LocalScale: {x: 14.825, y: 15.047, z: 1}
+  m_LocalScale: {x: 1.793825, y: 1.820687, z: 0.121}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,8 +71,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.11107876, g: 0.023584902, b: 1, a: 1}
+  m_Sprite: {fileID: -4479397828397548910, guid: 9d43f862ed59dcd41b45926d781bbeb0,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -80,3 +83,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1306587999
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7113214510021073705}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.15389465, y: -0.2783083}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 1.5}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9112209, y: 0.7765928}
+  m_EdgeRadius: 0
+--- !u!114 &1306588000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7113214510021073705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d676fc4654b1641aa4b9d1af91cea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 8
+  stationHealthText: {fileID: 0}
+  spriteArray:
+  - {fileID: -4479397828397548910, guid: 9d43f862ed59dcd41b45926d781bbeb0, type: 3}
+  - {fileID: -8060724138311223719, guid: 9d43f862ed59dcd41b45926d781bbeb0, type: 3}
+  - {fileID: 7854255930795871704, guid: 9d43f862ed59dcd41b45926d781bbeb0, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StationHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
+    public int maxHealth;
          
     public int health { get { return currentHealth; }}
 
@@ -16,6 +16,7 @@ public class StationHealth : MonoBehaviour
     private SceneManger manager;
 
     public Text stationHealthText;
+    public Sprite[] spriteArray;
 
     void Start()
     {
@@ -27,10 +28,16 @@ public class StationHealth : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        if (amount < 0)
+        if (currentHealth == 6)
         {
             //audio for losing health would go here
-            sprite.color = new Color (1, 0, 0, 1);
+           sprite.sprite = spriteArray[1];
+        }
+
+        if (currentHealth == 3)
+        {
+            //audio again
+            sprite.sprite = spriteArray[2];
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
