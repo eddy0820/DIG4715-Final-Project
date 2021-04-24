@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 3889982631909853574}
   - component: {fileID: 3889982631909853569}
   - component: {fileID: 3889982631909853568}
+  - component: {fileID: 2575322628913477174}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -228,6 +229,25 @@ MonoBehaviour:
   enemyHealth: {fileID: 4756395462938669667}
   economyGiven: 2
   damageToStation: -1
+--- !u!95 &2575322628913477174
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889982631909853571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f9b280d2dddcb048b9d3d98b23f9059, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4109752120093992012
 GameObject:
   m_ObjectHideFlags: 0
