@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class EnemySpawner : MonoBehaviour
 {
     public static EnemySpawner instance { get; private set; }
+
     public GameObject Enemy;
 
-    public int spawnCount;
+    public int spawnCount = 5;
 
     public float spawnDelay;
     
@@ -21,6 +22,12 @@ public class EnemySpawner : MonoBehaviour
     private bool invokeCalled = false;
 
     public Text startText;
+
+    private int enemiesDestroyed = 0;
+
+    private SceneManger manager;
+
+    private StationHealth station;
     
     void Awake()
     {
@@ -30,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         startText.text = "Place a tower down by left clicking to start the round!";
+        manager = GameObject.Find("Manager").GetComponent<SceneManger>();
+        station = GameObject.Find("Station").GetComponent<StationHealth>();
     }
 
     void Update()
@@ -44,6 +53,12 @@ public class EnemySpawner : MonoBehaviour
         if(numSpawned == spawnCount)
         {
             CancelInvoke();
+        }
+
+        if(enemiesDestroyed == spawnCount && station.health > 0)
+        {
+            manager.gameWin = true;
+            manager.SwitchScene();
         }
     }
 
@@ -61,6 +76,11 @@ public class EnemySpawner : MonoBehaviour
     public bool GetIsPowered()
     {
         return roundStarted;
+    }
+
+    public void IncrementEnemiesDestroyed()
+    {
+        enemiesDestroyed++;
     }
 
 }

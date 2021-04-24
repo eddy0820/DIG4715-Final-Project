@@ -1,30 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StationHealth : MonoBehaviour
 {
-     public int maxHealth = 3;
+    public int maxHealth = 3;
          
-     public int health { get { return currentHealth; }}
-     int currentHealth;
-     SpriteRenderer sprite;
-     private SceneManger manager;
+    public int health { get { return currentHealth; }}
+
+    int currentHealth;
+
+    SpriteRenderer sprite;
+
+    private SceneManger manager;
+
+    public Text stationHealthText;
 
     void Start()
     {
         currentHealth = maxHealth;
         sprite = GetComponent<SpriteRenderer>();
         manager = GameObject.Find("Manager").GetComponent<SceneManger>();
+        stationHealthText.text = "Health: " + currentHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    
     public void ChangeHealth(int amount)
     {
         if (amount < 0)
@@ -34,10 +34,12 @@ public class StationHealth : MonoBehaviour
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        stationHealthText.text = "Health: " + currentHealth;
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             manager.gameOver = true;
+            manager.SwitchScene();
         }
     }
 }

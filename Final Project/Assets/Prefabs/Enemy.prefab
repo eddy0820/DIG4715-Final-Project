@@ -226,6 +226,7 @@ MonoBehaviour:
   currentHealth: 100
   enemyHealth: {fileID: 4756395462938669667}
   economyGiven: 2
+  damageToStation: -1
 --- !u!1 &4109752120093992012
 GameObject:
   m_ObjectHideFlags: 0

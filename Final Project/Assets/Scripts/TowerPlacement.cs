@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class TowerPlacement : MonoBehaviour
 {
     public GameObject towerPrefab;
+
     private GameObject tower;
+
     public int towerCost = 5;
 
     private bool Occupied()
@@ -16,16 +18,16 @@ public class TowerPlacement : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (Occupied())
+        if(Occupied())
+        {
+            if(Economy.instance.GetCurrentEconomy() >= towerCost)
             {
-                if(Economy.instance.GetCurrentEconomy() >= towerCost)
-                {
-                    tower = (GameObject) 
-                    Instantiate(towerPrefab, transform.position, Quaternion.identity);
-                    EnemySpawner.instance.SetRoundStarted(true);
-                    Economy.instance.PlaceTower(towerCost);
-                    //audio here if we want it
-                }
+                tower = (GameObject) 
+                Instantiate(towerPrefab, transform.position, Quaternion.identity);
+                EnemySpawner.instance.SetRoundStarted(true);
+                Economy.instance.PlaceTower(towerCost);
+                //audio here if we want it
             }
+        }
     }
 }

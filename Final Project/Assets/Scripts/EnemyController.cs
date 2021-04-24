@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
     public GameObject[] points;
+
     private int currentPath = 0;
+
     private float lastPoint;
+
     public float speed = 1.0f;
+
     private int enemiesSpawned = 0;
+
     public int maxHealth = 100;
+
     public int currentHealth;
+
     public EnemyHealth enemyHealth;
 
     public int economyGiven = 1;
 
-    private void Awake () 
+    public int damageToStation = -1;
+
+    private bool stopBulletCollisions = false;
+
+    private void Awake() 
     {
         Enemies.enemies.Add (gameObject);
         currentHealth = maxHealth;
         enemyHealth.SetMaxHealth(maxHealth);
     }
 
-    void Start () {
+    void Start() 
+    {
         lastPoint = Time.time;
     }
 
-    void Update () {
+    void Update () 
+    {
         Vector3 startPosition = points[currentPath].transform.position;
         Vector3 endPosition = points[currentPath + 1].transform.position;
 
@@ -35,48 +48,52 @@ public class EnemyController : MonoBehaviour {
 
         gameObject.transform.position = Vector2.Lerp (startPosition, endPosition, currentTime / totalTime);
 
-        if (gameObject.transform.position.Equals (endPosition)) {
-            if (currentPath < points.Length - 2) {
+        if (gameObject.transform.position.Equals (endPosition)) 
+        {
+            if (currentPath < points.Length - 2) 
+            {
                 currentPath++;
                 lastPoint = Time.time;
-            } else {
-                Destroy (gameObject);
+            } 
+            else 
+            {
+                Die();
             }
         }
     }
 
-    void Die () 
+    void Die() 
     {
         Enemies.enemies.Remove (gameObject);
+        Destroy(this.gameObject); 
         Economy.instance.UpdateEconomy(economyGiven);
-        Destroy (transform.gameObject);
-
+        EnemySpawner.instance.IncrementEnemiesDestroyed();
     }
 
-    void OnCollisionEnter2D (Collision2D other) 
+    void OnCollisionEnter2D(Collision2D other) 
     {
-        StationHealth enemy = other.gameObject.GetComponent<StationHealth> ();
+        StationHealth station = other.gameObject.GetComponent<StationHealth> ();
 
-        if (enemy != null) 
+        if (station != null) 
         {
-            enemy.ChangeHealth (-1);
-            Debug.Log ("You lost health!");
+            station.ChangeHealth(damageToStation);
+            Debug.Log ("You lost " + damageToStation + " health!");
         }
 
-        if (other.gameObject.CompareTag ("Bullet")) 
+        if (stopBulletCollisions == false && other.gameObject.CompareTag ("Bullet")) 
         {
             Damage(20);
 
-                if (currentHealth == 0)
-                {
-                   Die ();
-                   Destroy (this.gameObject); 
-                }
+            if (currentHealth <= 0)
+            {
+                Die();
+                stopBulletCollisions = true;
+            }
             
         }
     }
 
-    private void stopSpawning () 
+    private void stopSpawning() 
     {
         enemiesSpawned--;
     }
