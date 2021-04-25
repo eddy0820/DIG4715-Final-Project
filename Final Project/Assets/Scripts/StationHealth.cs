@@ -18,6 +18,8 @@ public class StationHealth : MonoBehaviour
     public Text stationHealthText;
     public Sprite[] spriteArray;
     public ParticleSystem particlePrefab;
+    public AudioClip damageSound;
+    AudioSource audioSource;
 
     void Start()
     {
@@ -25,20 +27,21 @@ public class StationHealth : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         manager = GameObject.Find("Manager").GetComponent<SceneManger>();
         stationHealthText.text = "Health: " + currentHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ChangeHealth(int amount)
     {
         if (currentHealth == 6)
         {
-            //audio for losing health would go here
+            audioSource.PlayOneShot(damageSound);
            sprite.sprite = spriteArray[1];
            particlePrefab.Play();
         }
 
         if (currentHealth == 3)
         {
-            //audio again
+            audioSource.PlayOneShot(damageSound);
             sprite.sprite = spriteArray[2];
             particlePrefab.Play();
         }

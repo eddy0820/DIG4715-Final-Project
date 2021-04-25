@@ -25,12 +25,15 @@ public class EnemyController : MonoBehaviour {
 
     private bool stopBulletCollisions = false;
     public ParticleSystem brokenPrefab;
+    public AudioClip brokenSound;
+    AudioSource audioSource;
 
     private void Awake() 
     {
         Enemies.enemies.Add (gameObject);
         currentHealth = maxHealth;
         enemyHealth.SetMaxHealth(maxHealth);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start() 
@@ -84,12 +87,14 @@ public class EnemyController : MonoBehaviour {
         if (stopBulletCollisions == false && other.gameObject.CompareTag ("Bullet")) 
         {
             Damage(20);
+            brokenPrefab.Play();
+            audioSource.PlayOneShot(brokenSound);
 
             if (currentHealth <= 0)
             {
                 Die();
                 stopBulletCollisions = true;
-                brokenPrefab.Play();
+                 
             }
             
         }
