@@ -183,7 +183,7 @@ MonoBehaviour:
   Bullet: {fileID: 7749457507560984366, guid: 988c17f468fae0548be68b192114ac5f, type: 3}
   fireRate: 2
   nextTimeToFire: 1
-  timeBetweenShots: 1
+  timeBetweenShots: 1.6
   ShootPoint: {fileID: 3747318792607364231}
   force: 100
   CurrentTarget: {fileID: 3889982631909853571, guid: b62ec75330473dc47b528b6aaadd1405,
